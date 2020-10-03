@@ -1,4 +1,4 @@
-var trex,trexAnim,ground,groundImage,invGround,cloudImage,cloudGroup,trapGroup,trap1,trap2,trap3,trap4,trap5,trap6;
+var trex,trexAnim,ground,groundImage,invGround,cloudImage,cloudGroup,trapGroup,trap1,trap2,trap3,trap4,trap5,trap6,jumpSound;
 var END=0;
 var PLAY=1;
 var gamestate=PLAY;
@@ -12,6 +12,7 @@ function preload(){
   trap4=loadImage("obstacle4.png");
   trap5=loadImage("obstacle5.png");
   trap6=loadImage("obstacle6.png");
+  jumpSound=loadSound("jump.mp3");
 }
 
 function setup(){
@@ -37,6 +38,7 @@ function draw(){
   if (gamestate===PLAY){
     if (keyDown ("space")&&trex.y>=164){
       trex. velocityY = -8;
+      jumpSound.play();
     }
     trex.velocityY = trex.velocityY+0.5;
     ground. velocityX = -5;
